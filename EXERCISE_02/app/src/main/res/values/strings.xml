@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GOT</string>
+    <string name="button">Button</string>
+    <string name="stark">STARK</string>
+    <string name="starl">Starl</string>
+    <string name="lanister">Lanister</string>
+    <string name="winter_is_coming">winter is coming</string>
+    <string name="todo">TODO</string>
+    <string name="lanistarhouse">lanistarHouse</string>
+    <string name="lannister">Lannister</string>
+    <string name="stark_family">Stark Family</string>
+</resources>
