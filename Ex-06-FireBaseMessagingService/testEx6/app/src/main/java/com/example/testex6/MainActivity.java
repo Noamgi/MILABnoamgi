@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity  {
                     Toast.makeText(view.getContext(), "Error while fetching weather", Toast.LENGTH_LONG);
                     return;
                 }
-//                ((TextView)MainActivity.this.findViewById(R.id.text_weather)).setText(response.location);
-//                ((TextView)MainActivity.this.findViewById(R.id.text_temprature)).setText(String.valueOf(response.temp));
-//                ((TextView)MainActivity.this.findViewById(R.id.text_description)).setText(response.description);
+//
             }
         });
     }
@@ -78,8 +76,6 @@ public class MainActivity extends AppCompatActivity  {
                                 }
                             });
 
-
-                    //return  token;
                     }
 
 

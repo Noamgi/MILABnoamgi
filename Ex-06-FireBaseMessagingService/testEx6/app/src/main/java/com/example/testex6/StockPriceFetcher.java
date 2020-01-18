@@ -16,9 +16,10 @@ import org.json.JSONObject;
 import static com.android.volley.Response.*;
 
 public class StockPriceFetcher {
+    private RequestQueue _queue;
     private static final String TAG = "StockPriceFetcher";
     private final static String REQUEST_URL = "http://10.0.2.2:8080/stockprice";
-    private RequestQueue _queue;
+
 
     public class PriceResponse {
         public boolean isError;
@@ -32,29 +33,24 @@ public class StockPriceFetcher {
         }
     }
 
+    public interface StockPriceResponseListener {
+        public void onResponse(PriceResponse response);
+    }
 
     public StockPriceFetcher(Context context) {
         _queue = Volley.newRequestQueue(context);
     }
 
-    public interface StockPriceResponseListener {
-        public void onResponse(PriceResponse response);
-    }
 
     private PriceResponse createErrorResponse() {
         return new PriceResponse(true, null, null);
     }
 
-    /**
-     * This method dispatches a request to our server
-     * @param shareName the requested share
-     * @param token the token of the device
-     * @param listener a listener
-     */
-    public void dispatchRequest(final String shareName, final String token, final StockPriceResponseListener listener) {
+
+    public void dispatchRequest(final String stockName, final String token, final StockPriceResponseListener listener) {
         JSONObject getBody = new JSONObject();
         try {
-            getBody.put("shareName", shareName);
+            getBody.put("stockName", stockName);
             getBody.put("token", token);
         }
 
@@ -63,17 +59,16 @@ public class StockPriceFetcher {
             return;
         }
 
-        Log.d(TAG, "The JSON object is " + getBody.toString());
 
         JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, REQUEST_URL, getBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            PriceResponse res = new PriceResponse(false, shareName, response.getJSONObject("Global Quote").getString("05. price"));
+                            PriceResponse res = new PriceResponse(false, stockName, response.getJSONObject("Global Quote").getString("05. price"));
                             listener.onResponse(res);
-                            Log.d(TAG, "Response is " + res);
-                        }  catch (Exception e) { //(JSONException e) {
+                        }
+                        catch (Exception e) { //(JSONException e) {
                             listener.onResponse(createErrorResponse());
                         }
                     }
@@ -83,6 +78,7 @@ public class StockPriceFetcher {
                 listener.onResponse(createErrorResponse());
             }
         });
+
         _queue.add(req);
     }
 }
