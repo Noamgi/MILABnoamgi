@@ -9,8 +9,7 @@ const stockDefault = 'TEVA';
 
 var app = express()
 app.use(express.json());
-const serviceAccount = require('C:/Users/Noam Ginsberg/milabNoam/server/ex-06-74fc6-firebase-adminsdk-f1gtv-36234ab74d.json');
-
+const serviceAccount = require('C:/Users/Noam Ginsberg/milabNoam/Ex_06-FireBaseMessagingService/server/ex-06-74fc6-firebase-adminsdk-f1gtv-36234ab74d.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
