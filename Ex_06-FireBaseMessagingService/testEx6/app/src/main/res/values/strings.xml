@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">testEx6</string>
+    <string name="first_time">First Time</string>
+    <string name="insert_the_stock_name">insert stock name</string>
+    <string name="choose_a_stock_and_find_out_its_latest_price">Choose a stock and find out its latest price</string>
+    <string name="get_the_stock_price">Get The Stock price</string>
+    <string name="insertStockName">insert the stock name</string>
+
+
+
+    <string name="subscribe_to_weather">Subscribe To Weather</string>
+    <string name="log_token">Log Token</string>
+    <string name="msg_subscribed">Subscribed to weather topic</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+      This is the name that users will see when interacting with this channel.
+      It should describe the category of notifications that will be sent through this channel
+   -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="true">Weather</string>
+    <!-- [END fcm_default_icon_string] -->
+    <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="insert_stock_name">insert_the_stock_name</string>
+</resources>
